@@ -1,0 +1,41 @@
+class Queue:
+    def __init__(self):
+        self.queue = []
+
+    def isEmpty(self):
+        return len(self.queue) == 0
+
+    def enqueue(self, item):
+        self.queue.append(item)
+        print(f"{item} added to queue")
+
+    def dequeue(self):
+        if self.isEmpty():
+            return "Queue is empty"
+        return self.queue.pop(0)  # Remove the first item
+
+    def peek(self):
+        if self.isEmpty():
+            return "Queue is empty"
+        return self.queue[0]  # Return the first item
+
+    def rear(self):
+        if self.isEmpty():
+            return "Queue is empty"
+        return self.queue[-1]  # Return the last item
+
+    def size(self):
+        return len(self.queue)
+
+# Driver code to test the Queue class
+if __name__ == "__main__":
+    queue = Queue()
+    queue.enqueue(10)
+    queue.enqueue(20)
+    queue.enqueue(30)
+    queue.enqueue(15)
+    print(f"Front element is {queue.peek()}")
+    print(f"{queue.dequeue()} dequeued from queue")
+    print(f"Front element is {queue.peek()}")
+    print(f"Rear element is {queue.rear()}")
+

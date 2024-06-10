@@ -1,0 +1,52 @@
+class Deque:
+    def __init__(self):
+        self.deque = []
+
+    def isEmpty(self):
+        return len(self.deque) == 0
+
+    def addFront(self, item):
+        self.deque.insert(0, item)
+        print(f"{item} added to the front of deque")
+
+    def addRear(self, item):
+        self.deque.append(item)
+        print(f"{item} added to the rear of deque")
+
+    def removeFront(self):
+        if self.isEmpty():
+            return "Deque is empty"
+        return self.deque.pop(0)  # Remove the first item
+
+    def removeRear(self):
+        if self.isEmpty():
+            return "Deque is empty"
+        return self.deque.pop()  # Remove the last item
+
+    def peekFront(self):
+        if self.isEmpty():
+            return "Deque is empty"
+        return self.deque[0]  # Return the first item
+
+    def peekRear(self):
+        if self.isEmpty():
+            return "Deque is empty"
+        return self.deque[-1]  # Return the last item
+
+    def size(self):
+        return len(self.deque)
+
+# Driver code to test the Deque class
+if __name__ == "__main__":
+    deque = Deque()
+    deque.addFront(10)
+    deque.addRear(20)
+    deque.addFront(30)
+    deque.addRear(15)
+    print(f"Front element is {deque.peekFront()}")
+    print(f"Rear element is {deque.peekRear()}")
+    print(f"{deque.removeFront()} removed from front of deque")
+    print(f"Front element is now {deque.peekFront()}")
+    print(f"{deque.removeRear()} removed from rear of deque")
+    print(f"Rear element is now {deque.peekRear()}")
+    print(f"Deque size is {deque.size()}")
