@@ -1,0 +1,45 @@
+class Graph:
+    def __init__(self):
+        self.graph = {}
+
+    def add_edge(self, u, v):
+        if u not in self.graph:
+            self.graph[u] = []
+        self.graph[u].append(v)
+
+    def dfs(self, start):
+        visited = set()  # Set to keep track of visited nodes.
+        self._dfs_recursive(start, visited)
+
+    def _dfs_recursive(self, node, visited):
+        if node not in visited:
+            print(node, end=" ")  # Print the node.
+            visited.add(node)  # Mark the node as visited.
+
+            # Recur for all the vertices adjacent to this vertex.
+            for neighbor in self.graph[node]:
+                if neighbor not in visited:
+                    self._dfs_recursive(neighbor, visited)
+
+# Example usage
+g = Graph()
+g.add_edge(0, 1)
+g.add_edge(0, 2)
+g.add_edge(1, 2)
+g.add_edge(2, 0)
+g.add_edge(2, 3)
+g.add_edge(3, 3)
+
+print("DFS starting from vertex 2:")
+g.dfs(2)
+"""
+    A
+  / | \
+ B  C  E
+ | \/  | \
+ | /   |  \
+ D---- F   G
+  \   /
+   \ /
+    E
+"""
